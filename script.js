@@ -1,99 +1,104 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
+/* MUSIQUE AUTOPLAY FIX */
+document.addEventListener("DOMContentLoaded", () => {
+    const music = document.getElementById("bg-music");
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    setTimeout(() => {
+        music.muted = false;
+        music.volume = 1;
+        music.play().catch(() => {});
+    }, 500);
+});
+
+/* LOADING */
+const fill = document.getElementById("fill");
+const percent = document.getElementById("percent");
+const status = document.getElementById("status");
+const mapSpan = document.getElementById("map");
+const gamemodeSpan = document.getElementById("gamemode");
+const tip = document.getElementById("tip");
+
+const tips = [
+    "Astuce : Night City récompense les joueurs intelligents.",
+    "Astuce : Les interactions sociales sont la clé.",
+    "Astuce : Explorez, discutez, vivez l’expérience.",
+    "Astuce : Les règles garantissent une ambiance unique.",
+    "Astuce : Votre histoire commence maintenant."
+];
+
+let progress = 0;
+
+function updateTip() {
+    tip.textContent = tips[Math.floor(Math.random() * tips.length)];
 }
 
-body {
-    overflow: hidden;
-    font-family: 'Montserrat', sans-serif;
-    color: #fff;
+function fakeLoading() {
+    const interval = setInterval(() => {
+        if (progress >= 100) {
+            clearInterval(interval);
+            status.textContent = "Connexion au serveur...";
+            return;
+        }
+
+        progress += Math.floor(Math.random() * 4) + 1;
+        if (progress > 100) progress = 100;
+
+        fill.style.width = progress + "%";
+        percent.textContent = progress + "%";
+
+        if (progress < 30) status.textContent = "Téléchargement des ressources...";
+        else if (progress < 60) status.textContent = "Chargement de la carte...";
+        else if (progress < 90) status.textContent = "Initialisation des entités...";
+        else status.textContent = "Préparation de l’environnement...";
+    }, 250);
 }
 
-/* Image de fond */
-.background-img {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.35;
-    z-index: -3;
+/* PARTICULES COMPATIBLES GMOD */
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+let particles = [];
+
+function initParticles() {
+    particles = [];
+    for (let i = 0; i < 70; i++) {
+        particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 2 + 1,
+            speedY: Math.random() * 0.6 + 0.2
+        });
+    }
 }
 
-/* Particules */
-#particles {
-    position: fixed;
-    inset: 0;
-    z-index: -2;
+function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    particles.forEach(p => {
+        p.y += p.speedY;
+        if (p.y > canvas.height) p.y = 0;
+
+        ctx.fillStyle = "rgba(0, 200, 255, 0.7)";
+        ctx.fillRect(p.x, p.y, p.size, p.size);
+    });
+
+    requestAnimationFrame(animateParticles);
 }
 
-/* Contenu centré */
-.center {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+function init() {
+    mapSpan.textContent = "rp_nightcity";
+    gamemodeSpan.textContent = "CyberRP";
+    updateTip();
+    setInterval(updateTip, 7000);
+    fakeLoading();
+    initParticles();
+    animateParticles();
 }
 
-/* TITRE */
-.title {
-    font-size: 3.5rem;
-    letter-spacing: 5px;
-    color: #00caff;
-    text-shadow: 0 0 15px #00caff;
-}
-
-.subtitle {
-    margin-top: 10px;
-    opacity: 0.8;
-}
-
-/* LOADER */
-.loader {
-    margin-top: 40px;
-}
-
-.bar {
-    width: 500px;
-    max-width: 80vw;
-    height: 12px;
-    background: rgba(255,255,255,0.15);
-    border-radius: 50px;
-    overflow: hidden;
-}
-
-.fill {
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(90deg, #00eaff, #0077ff);
-    box-shadow: 0 0 10px #00eaff;
-    transition: width 0.25s ease-out;
-}
-
-#percent {
-    margin-top: 10px;
-    font-size: 1.1rem;
-}
-
-#status {
-    margin-top: 5px;
-    opacity: 0.85;
-}
-
-/* INFOS */
-.info {
-    margin-top: 30px;
-    opacity: 0.9;
-}
-
-/* TIPS */
-.tips {
-    margin-top: 30px;
-    opacity: 0.8;
-}
+document.addEventListener("DOMContentLoaded", init);
