@@ -33,13 +33,16 @@ body {
 /* Contenu centré */
 .center {
     position: absolute;
-    inset: 0;
+    top: 50%;               /* Centre verticalement */
+    left: 50%;              /* Centre horizontalement */
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    text-align: center;
 }
+
 
 /* TITRE */
 .title {
@@ -97,3 +100,4 @@ body {
     margin-top: 30px;
     opacity: 0.8;
 }
+
