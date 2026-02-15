@@ -7,35 +7,35 @@
 </head>
 <body>
 
-<!-- Musique de fond -->
+<!-- Musique -->
 <audio id="bg-music" autoplay loop muted>
     <source src="asset/audio.mp3" type="audio/mpeg">
 </audio>
 
-<div class="background"></div>
+<!-- Image de fond -->
+<img src="asset/fond.jpg" class="background-img">
+
 <canvas id="particles"></canvas>
 
-<div class="content">
-    <div class="glass">
-        <h1 class="title">Jordan Développement</h1>
-        <p class="subtitle">Bienvenue dans votre nouvelle expérience</p>
+<div class="center">
+    <h1 class="title">NIGHT CITY</h1>
+    <p class="subtitle">Bienvenue dans votre nouvelle expérience</p>
 
-        <div class="loader">
-            <div class="bar">
-                <div class="fill" id="fill"></div>
-            </div>
-            <p id="percent">0%</p>
-            <p id="status" class="status">Initialisation...</p>
+    <div class="loader">
+        <div class="bar">
+            <div class="fill" id="fill"></div>
         </div>
+        <p id="percent">0%</p>
+        <p id="status">Initialisation...</p>
+    </div>
 
-        <div class="info">
-            <p>Carte : <span id="map">chargement...</span></p>
-            <p>Gamemode : <span id="gamemode">chargement...</span></p>
-        </div>
+    <div class="info">
+        <p>Carte : <span id="map">chargement...</span></p>
+        <p>Gamemode : <span id="gamemode">chargement...</span></p>
+    </div>
 
-        <div class="tips">
-            <p id="tip">Astuce : Night City récompense les joueurs intelligents.</p>
-        </div>
+    <div class="tips">
+        <p id="tip">Astuce : Night City récompense les joueurs intelligents.</p>
     </div>
 </div>
 
