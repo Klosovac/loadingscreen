@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Night City - Chargement...</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Musique de fond -->
+<audio id="bg-music" autoplay loop muted>
+    <source src="asset/audio.mp3" type="audio/mpeg">
+</audio>
+
+<div class="background"></div>
+<canvas id="particles"></canvas>
+
+<div class="content">
+    <div class="glass">
+        <h1 class="title">Jordan Développement</h1>
+        <p class="subtitle">Bienvenue dans votre nouvelle expérience</p>
+
+        <div class="loader">
+            <div class="bar">
+                <div class="fill" id="fill"></div>
+            </div>
+            <p id="percent">0%</p>
+            <p id="status" class="status">Initialisation...</p>
+        </div>
+
+        <div class="info">
+            <p>Carte : <span id="map">chargement...</span></p>
+            <p>Gamemode : <span id="gamemode">chargement...</span></p>
+        </div>
+
+        <div class="tips">
+            <p id="tip">Astuce : Night City récompense les joueurs intelligents.</p>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Montserrat:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Image de fond */
+.background {
+    position: fixed;
+    inset: 0;
+    background: url("asset/fond.png") center/cover no-repeat;
+    filter: brightness(0.35) blur(2px);
+    z-index: -3;
+}
+
+
+/* Particules */
+#particles {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+}
+
+/* Contenu centré */
+.content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Carte en verre fumé */
+.glass {
+    background: rgba(10, 20, 35, 0.7);
+    border-radius: 18px;
+    border: 1px solid rgba(0, 200, 255, 0.35);
+    box-shadow: 0 0 30px rgba(0, 200, 255, 0.25);
+    padding: 40px 60px;
+    text-align: center;
+    backdrop-filter: blur(18px);
+    max-width: 700px;
+    width: 90%;
+}
+
+/* Titre */
+.title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3.2rem;
+    letter-spacing: 6px;
+    text-shadow: 0 0 20px #00eaff;
+}
+
+.subtitle {
+    margin-top: 10px;
+    opacity: 0.8;
+    font-size: 1.1rem;
+}
+
+/* Loader */
+.loader {
+    margin-top: 35px;
+}
+
+.bar {
+    width: 100%;
+    height: 12px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+.fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #00eaff, #0077ff);
+    box-shadow: 0 0 15px #00eaff;
+    transition: width 0.25s ease-out;
+}
+
+#percent {
+    margin-top: 10px;
+    font-size: 1.05rem;
+}
+
+.status {
+    margin-top: 5px;
+    opacity: 0.8;
+}
+
+/* Infos */
+.info {
+    margin-top: 30px;
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+/* Tips */
+.tips {
+    margin-top: 30px;
+    font-size: 0.95rem;
+    opacity: 0.8;
+}
