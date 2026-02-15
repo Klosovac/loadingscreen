@@ -92,8 +92,8 @@ function animateParticles() {
 }
 
 function init() {
-    mapSpan.textContent = "rp_nightcity";
-    gamemodeSpan.textContent = "CyberRP";
+    mapSpan.textContent = "rp_rockford_v2b";
+    gamemodeSpan.textContent = "DarkRP";
     updateTip();
     setInterval(updateTip, 7000);
     fakeLoading();
@@ -102,3 +102,4 @@ function init() {
 }
 
 document.addEventListener("DOMContentLoaded", init);
+
