@@ -13,7 +13,7 @@ body {
 }
 
 /* Image de fond */
-.background-img {
+.background {
     position: fixed;
     inset: 0;
     width: 100%;
